@@ -30,16 +30,21 @@ public:
 					{
 						num += 4;
 						i++;
-						continue;
 					}
-					if (s[i+1]=='X')
+					else if (s[i+1]=='X')
 					{
 						num += 9;
 						i++;
-						continue;
+					}
+					else
+					{
+						num += 1;
 					}
 				}
-				num += 1;
+				else
+				{
+					num += 1;
+				}
 				break;
 			case 'X':
 				if (i + 1 < s.size())
@@ -48,16 +53,21 @@ public:
 					{
 						num += 40;
 						i++;
-						continue;
 					}
-					if (s[i + 1] == 'C')
+					else if (s[i + 1] == 'C')
 					{
 						num += 90;
 						i++;
-						continue;
+					}
+					else
+					{
+						num += 10;
 					}
 				}
-				num += 10;
+				else
+				{
+					num += 10;
+				}
 				break;
 			case 'C':
 				if (i + 1 < s.size())
@@ -66,16 +76,21 @@ public:
 					{
 						num += 400;
 						i++;
-						continue;
 					}
-					if (s[i + 1] == 'M')
+					else if (s[i + 1] == 'M')
 					{
 						num += 900;
 						i++;
-						continue;
+					}
+					else
+					{
+						num += 100;
 					}
 				}
-				num += 1;
+				else
+				{
+					num += 100;
+				}
 				break;
 			default:
 				break;
@@ -84,6 +99,41 @@ public:
 		}
 		return num;
     }
+
+	int better(string s) {
+	
+		//s = s.replace("IV", "a");
+		//s = s.replace("IX", "b");
+		//s = s.replace("XL", "c");
+		//s = s.replace("XC", "d");
+		//s = s.replace("CD", "e");
+		//s = s.replace("CM", "f");
+
+		/*int result = 0;
+		for (int i = 0; i < s.length(); i++) {
+			result += which(s.charAt(i));
+		}
+		return result;*/
+	}
+
+	int which(char ch) {
+		switch (ch) {
+		case 'I': return 1;
+		case 'V': return 5;
+		case 'X': return 10;
+		case 'L': return 50;
+		case 'C': return 100;
+		case 'D': return 500;
+		case 'M': return 1000;
+		case 'a': return 4;
+		case 'b': return 9;
+		case 'c': return 40;
+		case 'd': return 90;
+		case 'e': return 400;
+		case 'f': return 900;
+		}
+		return 0;
+	}
 };
 
 int main() {
